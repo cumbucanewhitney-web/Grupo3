@@ -1,3 +1,3 @@
-# Etapa 0 — configuração inicial
+# Alterações desta etapa
 
-Estrutura base do projecto e pipeline de Integração Contínua com dois jobs: **Testes Unitários** e **Build**.
+Usar este snapshot no ciclo test-first correspondente. Validar o resultado no separador **Actions** e nos **Checks** do Pull Request.
