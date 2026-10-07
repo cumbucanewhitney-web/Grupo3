@@ -1,0 +1,53 @@
+name: CI - Testes e Build
+
+# Executa a CI em qualquer push (incluindo feature branches) para permitir
+# observar o ciclo vermelho -> verde antes de abrir o Pull Request.
+# Nos Pull Requests, valida apenas alterações cujo destino seja a main.
+on:
+  push:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Testes Unitários
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Obter código do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Executar testes unitários
+        run: npm test
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: tests
+
+    steps:
+      - name: Obter código do repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar artefacto do site
+        run: |
+          mkdir -p dist
+          cp index.html style.css app.js calculator.js dist/
+          test -s dist/index.html
+          echo "Build concluído com sucesso."
+
+      - name: Guardar artefacto do build
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculadora-${{ github.sha }}
+          path: dist/
+          retention-days: 7

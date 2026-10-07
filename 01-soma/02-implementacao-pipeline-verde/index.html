@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora CI/CD</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="calculator">
+    <h1>Calculadora</h1>
+
+    <output id="display" aria-live="polite" aria-label="Resultado">0</output>
+
+    <div class="buttons">
+      <button data-action="clear" class="clear">C</button>
+      <button data-operation="/" disabled>÷</button>
+      <button data-operation="*" disabled>×</button>
+      <button data-operation="-" disabled>−</button>
+
+      <button data-number="7">7</button>
+      <button data-number="8">8</button>
+      <button data-number="9">9</button>
+      <button data-operation="+">+</button>
+
+      <button data-number="4">4</button>
+      <button data-number="5">5</button>
+      <button data-number="6">6</button>
+      <button data-action="equals" class="equals">=</button>
+
+      <button data-number="1">1</button>
+      <button data-number="2">2</button>
+      <button data-number="3">3</button>
+
+      <button data-number="0" class="zero">0</button>
+      <button data-number=".">.</button>
+    </div>
+  </main>
+
+  <script src="./calculator.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
