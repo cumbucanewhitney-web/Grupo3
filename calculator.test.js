@@ -3,3 +3,5 @@
 test("subtrair 8 - 3 deve devolver 5", () => { 
 assert.equal(subtrair(8, 3), 5); 
 }); 
+function subtrair(a, b) { 
+ret
